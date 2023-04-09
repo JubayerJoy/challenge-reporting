@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: on-failure
+    # environment:
+    #   - SQLITE_USERNAME=$SQLITE_USERNAME
+    #   - SQLITE_PASSWORD=$SQLITE_PASSWORD
+    #   - SQLITE_HOSTNAME=db
+    #   - SQLITE_PORT=$SQLITE_PORT
+    #   - SQLITE_DB=$SQLITE_DB
+    ports:
+      - "1337:1337"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

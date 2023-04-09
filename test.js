@@ -20,6 +20,38 @@ tape('health', async function (t) {
   }
 })
 
+/**
+ * Test for `/student/:id` endpoint
+ * 1. Should should return correct student information when given a valid ID
+ * 2. Should return 404 when given an invalid ID 
+ */
+tape('getStudent should return correct student information when given a valid ID', async (t) => {
+  try {
+    const url = `${endpoint}/student/1`
+    const { data, response } = await jsonist.get(url)
+    console.log(response.statusCode, data.studentInfo.id);
+    t.equal(response.statusCode, 200, 'should return 200')
+    t.equal(data.success, true, 'should return success as true')
+    t.equal(data.studentInfo.id, 1, 'should return student with id 1')
+    t.end()
+  } catch (e) {
+    t.error(e);
+  }
+})
+
+tape('getStudent should return 404 when given an invalid ID', async (t) => {
+  try {
+    const url = `${endpoint}/student/-1`
+    const { data, response } = await jsonist.get(url)
+    t.equal(response.statusCode, 404, 'should return 404')
+    t.equal(data.success, false, 'should return success as false')
+    t.equal(data.errorMessage, 'Student not found.', 'should return student not found')
+    t.end()
+  } catch (e) {
+    t.error(e);
+  }
+})
+
 tape('cleanup', function (t) {
   server.closeDB()
   server.close()

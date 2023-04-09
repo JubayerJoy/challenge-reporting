@@ -1,0 +1,51 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "challenge-reporting",
+  "dateExported": "2023-04-09T19:50:26.847Z",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "5b3a6c9a-743f-459a-a5f6-46083f31a903",
+      "colId": "a8886abb-5d3e-4331-89f9-97231670d602",
+      "containerId": "",
+      "name": "Health Check",
+      "url": "http://localhost:1337/health",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2023-04-09T14:01:33.353Z",
+      "modified": "2023-04-09T14:01:33.353Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "b2f7dfc0-327b-4337-b6c9-b988532c3462",
+      "colId": "a8886abb-5d3e-4331-89f9-97231670d602",
+      "containerId": "",
+      "name": "Get Student",
+      "url": "http://localhost:1337/student/0",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2023-04-09T14:02:24.698Z",
+      "modified": "2023-04-09T19:46:33.236Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "2c826afc-a4d1-43f2-ae4b-3fc5c78aaa39",
+      "colId": "a8886abb-5d3e-4331-89f9-97231670d602",
+      "containerId": "",
+      "name": "Get Student Grade",
+      "url": "http://localhost:1337/student/1/grades",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2023-04-09T14:47:16.844Z",
+      "modified": "2023-04-09T14:55:16.479Z",
+      "headers": [],
+      "params": [],
+      "tests": []
+    }
+  ]
+}

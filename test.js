@@ -28,10 +28,10 @@ tape('health', async function (t) {
 tape('getStudent should return correct student information when given a valid ID', async (t) => {
   try {
     const url = `${endpoint}/student/1`
-    const { data, response } = await jsonist.get(url)
-    console.log(response.statusCode, data.studentInfo.id);
+    const { data: result, response } = await jsonist.get(url)
+    const { success, data } = result;
     t.equal(response.statusCode, 200, 'should return 200')
-    t.equal(data.success, true, 'should return success as true')
+    t.equal(success, true, 'should return success as true')
     t.equal(data.studentInfo.id, 1, 'should return student with id 1')
     t.end()
   } catch (e) {
@@ -42,15 +42,49 @@ tape('getStudent should return correct student information when given a valid ID
 tape('getStudent should return 404 when given an invalid ID', async (t) => {
   try {
     const url = `${endpoint}/student/-1`
-    const { data, response } = await jsonist.get(url)
+    const { data: result, response } = await jsonist.get(url)
+    const { success, error } = result;
     t.equal(response.statusCode, 404, 'should return 404')
-    t.equal(data.success, false, 'should return success as false')
-    t.equal(data.errorMessage, 'Student not found.', 'should return student not found')
+    t.equal(success, false, 'should return success as false')
+    t.equal(error, 'Student not found.', 'should return student not found')
     t.end()
   } catch (e) {
     t.error(e);
   }
 })
+
+/**
+ * Test for `/student/:id/grades` endpoint
+ * 1. Should should return correct student and grade information when given a valid ID
+ * 2. Should return 404 when given an invalid ID 
+ */
+// tape('getStudent should return correct student information when given a valid ID', async (t) => {
+//   try {
+//     const url = `${endpoint}/student/1/grades`
+//     const { data: result, response } = await jsonist.get(url)
+//     const { success, data } = result;
+//     t.equal(response.statusCode, 200, 'should return 200')
+//     t.equal(success, true, 'should return success as true')
+//     t.equal(data.studentInfo.id, 1, 'should return student with id 1')
+//     t.end()
+//   } catch (e) {
+//     t.error(e);
+//   }
+// })
+
+// tape('getStudent should return 404 when given an invalid ID', async (t) => {
+//   try {
+//     const url = `${endpoint}/student/-1`
+//     const { data: result, response } = await jsonist.get(url)
+//     const { success, data } = result;
+//     t.equal(response.statusCode, 404, 'should return 404')
+//     t.equal(success, false, 'should return success as false')
+//     t.equal(data.errorMessage, 'Student not found.', 'should return student not found')
+//     t.end()
+//   } catch (e) {
+//     t.error(e);
+//   }
+// })
 
 tape('cleanup', function (t) {
   server.closeDB()

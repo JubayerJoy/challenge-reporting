@@ -27,10 +27,10 @@ async function getStudent(req, res, next) {
     if (!studentInfo) {
       res
         .status(404)
-        .json({ success: false, errorMessage: "Student not found." });
+        .json({ success: false, error: "Student not found." });
       return;
     }
-    res.status(200).json({ success: true, studentInfo });
+    res.status(200).json({ success: true, data: { studentInfo } });
   } catch (error) {
     // send error to error handler middleware
     next(error);
@@ -42,8 +42,8 @@ async function getStudentGradesReport(req, res, next) {
   const student = await getStudentById(id);
   const grades = await getStudentGradesById(id);
   const report = {
-    student,
-    grades,
+    success: true,
+    data: { student, grades },
   };
   res.json(report);
 }

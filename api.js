@@ -23,14 +23,14 @@ async function getHealth(req, res, next) {
 async function getStudent(req, res, next) {
   try {
     const studentId = req.params.id;
-    const studentInfo = await getStudentById(studentId);
-    if (!studentInfo) {
+    const student = await getStudentById(studentId);
+    if (!student) {
       res
         .status(404)
         .json({ success: false, error: "Student not found." });
       return;
     }
-    res.status(200).json({ success: true, data: { studentInfo } });
+    res.status(200).json({ success: true, data: { student } });
   } catch (error) {
     // send error to error handler middleware
     next(error);
@@ -40,6 +40,13 @@ async function getStudent(req, res, next) {
 async function getStudentGradesReport(req, res, next) {
   const { id } = req.params;
   const student = await getStudentById(id);
+  if (!student) {
+    res
+      .status(404)
+      .json({ success: false, error: "Student not found." });
+    return;
+  }
+
   const grades = await getStudentGradesById(id);
   const report = {
     success: true,

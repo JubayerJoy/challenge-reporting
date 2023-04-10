@@ -1,5 +1,4 @@
 const knex = require("./db");
-const axios = require("axios");
 
 module.exports = {
   getHealth,
@@ -9,6 +8,7 @@ module.exports = {
 };
 
 const { getStudentById, getStudentGradesById } = require("./utils/student");
+const { getCourseGradesStatistics } = require("./utils/course");
 
 async function getHealth(req, res, next) {
   try {
@@ -25,9 +25,7 @@ async function getStudent(req, res, next) {
     const studentId = req.params.id;
     const student = await getStudentById(studentId);
     if (!student) {
-      res
-        .status(404)
-        .json({ success: false, error: "Student not found." });
+      res.status(404).json({ success: false, error: "Student not found." });
       return;
     }
     res.status(200).json({ success: true, data: { student } });
@@ -38,23 +36,34 @@ async function getStudent(req, res, next) {
 }
 
 async function getStudentGradesReport(req, res, next) {
-  const { id } = req.params;
-  const student = await getStudentById(id);
-  if (!student) {
-    res
-      .status(404)
-      .json({ success: false, error: "Student not found." });
-    return;
-  }
+  try {
+    const { id } = req.params;
+    const student = await getStudentById(id);
+    if (!student) {
+      res.status(404).json({ success: false, error: "Student not found." });
+      return;
+    }
 
-  const grades = await getStudentGradesById(id);
-  const report = {
-    success: true,
-    data: { student, grades },
-  };
-  res.json(report);
+    const grades = await getStudentGradesById(id);
+    const report = {
+      success: true,
+      data: { student, grades },
+    };
+    res.json(report);
+  } catch (error) {
+    next(error);
+  }
 }
 
 async function getCourseGradesReport(req, res, next) {
-  throw new Error("This method has not been implemented yet.");
+  try {
+    const data = await getCourseGradesStatistics();
+    const report = {
+      success: true,
+      data,
+    };
+    res.json(report);
+  } catch (error) {
+    next(error);
+  }
 }

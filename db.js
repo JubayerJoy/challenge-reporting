@@ -4,7 +4,7 @@ if (!knex) {
   knex = require('knex')({
     client: 'sqlite3',
     connection: {
-      filename: './students.db'
+      filename: './data/students.db'
     },
     useNullAsDefault: true
   })

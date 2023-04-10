@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "inspector-api": "^1.4.1",
     "knex": "^0.21.21",
+    "promise": "^8.3.0",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {

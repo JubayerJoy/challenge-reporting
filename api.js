@@ -7,8 +7,8 @@ module.exports = {
   getCourseGradesReport,
 };
 
-const { getStudentById, getStudentGradesById } = require("./utils/student");
-const { getCourseGradesStatistics } = require("./utils/course");
+const { getStudentById, getStudentGradesById } = require("./service/student");
+const { getCourseGradesStatistics } = require("./service/course");
 
 async function getHealth(req, res, next) {
   try {

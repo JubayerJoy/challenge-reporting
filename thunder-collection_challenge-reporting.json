@@ -1,0 +1,65 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "challenge-reporting",
+    "dateExported": "2023-06-12T14:12:52.382Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5b3a6c9a-743f-459a-a5f6-46083f31a903",
+            "colId": "a8886abb-5d3e-4331-89f9-97231670d602",
+            "containerId": "",
+            "name": "Health Check",
+            "url": "http://localhost:1337/health",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-04-09T14:01:33.353Z",
+            "modified": "2023-04-09T14:01:33.353Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b2f7dfc0-327b-4337-b6c9-b988532c3462",
+            "colId": "a8886abb-5d3e-4331-89f9-97231670d602",
+            "containerId": "",
+            "name": "Get Student",
+            "url": "http://localhost:1337/student/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-04-09T14:02:24.698Z",
+            "modified": "2023-04-10T14:19:22.859Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2c826afc-a4d1-43f2-ae4b-3fc5c78aaa39",
+            "colId": "a8886abb-5d3e-4331-89f9-97231670d602",
+            "containerId": "",
+            "name": "Get Student Grade",
+            "url": "http://localhost:1337/student/1/grades",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-04-09T14:47:16.844Z",
+            "modified": "2023-04-10T14:19:34.739Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7215b230-f2d3-4258-9f06-b8abc84fe699",
+            "colId": "a8886abb-5d3e-4331-89f9-97231670d602",
+            "containerId": "",
+            "name": "Get Course Grades Statistics",
+            "url": "http://localhost:1337/course/all/grades",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-04-10T13:17:25.439Z",
+            "modified": "2023-04-10T13:17:57.003Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
